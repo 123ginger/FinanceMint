@@ -1,0 +1,26 @@
+.nav-item {
+    font-style: normal;
+    font-size: 21px;
+    padding: 0 20vh;
+}
+
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.card-title {
+    color: #2E7FDD;
+    text-decoration: underline;
+}
+
+button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}

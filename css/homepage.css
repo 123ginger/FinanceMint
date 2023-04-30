@@ -1,0 +1,41 @@
+hr {
+    border-style: solid;
+    border-color: black;
+    padding-top: 35px;
+    width: 50%;
+    border-width: 2px 0 0;
+    height: 2px;
+    margin-top: 5vh;
+    background-color: transparent;
+}
+
+.card {
+    width: 75%;
+    border: 0;
+}
+
+.final_section, .card {
+    text-align: center;
+    font-style: normal;
+}
+
+.final_section {
+    font-size: 40px;
+}
+
+.image1, .image3{
+    border-radius: 50%;
+    float: left;
+    height: 38vh;
+    width: 38vh;
+}
+
+.card-img-top {
+    height: 25vh;
+}
+
+.card-title {
+    font-size: 25px;
+}
+
+

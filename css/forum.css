@@ -1,0 +1,39 @@
+.forum_image {
+    height: 40vh;
+    width: 100vh;
+    /* ChatGPT */
+    display: block; 
+    max-width: 100%; 
+    margin: 0 auto;
+    /* ChatGPT */
+}
+
+.card {
+    border: 0;
+    text-align: center;
+    width: 75vh;
+    margin-left: 50vh;
+}
+
+.card-title {
+    font-size: 25px;
+}
+
+/* ChatGPT */
+.post {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+  
+.post-header {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+  
+.post-date {
+    font-style: italic
+}
+
+  
+/* ChatGPT */
