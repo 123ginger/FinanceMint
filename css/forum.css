@@ -8,11 +8,16 @@
     /* ChatGPT */
 }
 
+.first{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .card {
     border: 0;
     text-align: center;
-    width: 75vh;
-    margin-left: 50vh;
+    width: 50%;
 }
 
 .card-title {
@@ -34,6 +39,4 @@
 .post-date {
     font-style: italic
 }
-
-  
 /* ChatGPT */
