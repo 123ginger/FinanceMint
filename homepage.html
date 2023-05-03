@@ -28,7 +28,14 @@
               <a class="nav-link" href="forum.html">Forum</a>
             </li>
             <li class="nav-item">
-              <a class="btn btn-info" href="login.html" role="button">Log out</a>
+              <a class="btn btn-info" href="{{url_for('logout')}}" role="button">Log out</a>
+              {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                  {% for msg in messages %}
+                    <p>{{msg}}</p>
+                  {% endfor %}
+                {% endif %}
+              {% endwith %}
             </li>
           </ul>
         </div>

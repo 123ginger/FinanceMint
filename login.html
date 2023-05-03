@@ -24,17 +24,25 @@
             </div>
           </div>
           <div class="background_image">
-            <div class="login-container">
+            <form action=”#” method="POST" class="login-container">
               <div class="form-group">
-                <label class="form-label">Username:</label>
-                <input type="text" class="form-input" name="username">
+                <label for="username" class="form-label">Username:</label>
+                <input id="username" type="text" class="form-input" name="username">
               </div>
               <div class="form-group">
-                <label class="form-label">Password:</label>
-                <input type="text" class="form-input" name="password">
+                <label for="password" class="form-label">Password:</label>
+                <input id="password" type="text" class="form-input" name="password">
               </div>
-              <button class="submit-btn">Login</button>
-            </div>
+              <button type="submit" class="submit-btn">Login</button>
+              {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                  {% for msg in messages %}
+                    <p>{{msg}}</p>
+                  {% endfor %}
+                {% endif %}
+              {% endwith %}
+
+            </form>
           </div>
           <hr>
         </div>

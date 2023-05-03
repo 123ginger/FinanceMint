@@ -36,7 +36,7 @@
             <a class="nav-link" href="forum.html">Forum</a>
           </li>
           <li class="nav-item">
-            <a class="btn btn-info" href="login.html" role="button">Log out</a>
+            <a class="btn btn-info" href="{{url_for('logout')}}" role="button">Log out</a>
           </li>
         </ul>
       </div>
@@ -55,9 +55,9 @@
     </div>
     
 
-    <!-- ChatGPT Created Form-->
+    <!-- ChatGPT Created Form but I put in flask items-->
     <div class="container">
-      <form id="post-form">
+      <form action=”#” method="POST" id="post-form">
         <div class="form-group">
           <label for="post-textarea">Post</label>
           <textarea class="form-control" id="post-textarea" rows="3" placeholder="Enter your post"></textarea>
@@ -65,6 +65,10 @@
         <div class="form-group">
           <label for="post-date-input">Date</label>
           <input type="date" class="form-control" id="post-date-input">
+        </div>
+        <div class="form-group">
+          <label for="post-word-count">Word Count</label>
+          <input type="word_count" class="form-control" id="post-word-count">
         </div>
         <div class="form-group">
           <label for="post-type-select">Type of content</label>

@@ -17,16 +17,11 @@
       <div class="row justify-content-center">
         <div class="col-md-8">
           <h2 class="text-center mb-4">Sign Up</h2>
-          <form>
+          <form action=”#” method="POST">
             <div class="form-group">
               <label for="username">Username</label>
               <input type="text" class="form-control" id="username" name="username" required>
               <span class="error-message" id="username-error"></span>
-            </div>
-            <div class="form-group">
-              <label for="username-check">Confirm Username</label>
-              <input type="text" class="form-control" id="username-check" name="username-check" required>
-              <span class="error-message" id="username-check-error"></span>
             </div>
             <div class="form-group">
               <label for="password">Password</label>
@@ -37,6 +32,9 @@
               <label for="password-check">Confirm Password</label>
               <input type="password" class="form-control" id="password-check" name="password-check" required>
               <span class="error-message" id="password-check-error"></span>
+            </div>
+            <div class="form-group">
+              <label for="password-check">Email</label>
             </div>
             <div class="form-group">
               <button type="submit" class="btn btn-primary">Sign Up</button>
