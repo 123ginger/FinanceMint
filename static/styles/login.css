@@ -8,7 +8,7 @@
 }
 
 .background_image {
-    background-image: url("/Users/bradfordtudor/Desktop/ATCS/FinanceMint/Images/login_image.jpg");
+    background-image: url("/static/images/login_image.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

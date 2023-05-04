@@ -8,8 +8,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- Your Personal CSS BELOW this Line -->
-    <link rel="stylesheet" href="css/universal.css">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="/static/styles/universal.css">
+    <link rel="stylesheet" href="/static/styles/login.css">
+    <script src="{{ url_for('static', filename='js/notification.js') }}"></script>
   </head>
 
   <body>
@@ -24,7 +25,7 @@
             </div>
           </div>
           <div class="background_image">
-            <form action=”#” method="POST" class="login-container">
+            <form method="POST" class="login-container">
               <div class="form-group">
                 <label for="username" class="form-label">Username:</label>
                 <input id="username" type="text" class="form-input" name="username">
@@ -33,14 +34,13 @@
                 <label for="password" class="form-label">Password:</label>
                 <input id="password" type="text" class="form-input" name="password">
               </div>
-              <button type="submit" class="submit-btn">Login</button>
-              {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                  {% for msg in messages %}
-                    <p>{{msg}}</p>
-                  {% endfor %}
-                {% endif %}
-              {% endwith %}
+              <button id="show-notification" class="btn btn-info submit-btn" type="submit">Login</button>
+              
+              <!-- need to get this to work -->
+              <div id="notification" class="notification hidden">
+                This is a notification!
+              </div>
+
 
             </form>
           </div>
@@ -71,11 +71,11 @@
     </div>
       <!-- Beginning of second section of page -->
       <div class="col-md-4 column2">
-        <img src="Images/logo.png" class="logo">
+        <img src="/static/images/logo.png" class="logo">
         <div class="signup_section">
           <h3>Don't have an account? Sign up for free!</h3>
         </div>
-        <a class="btn btn-primary button2" href="signup.html">Sign Up</a>
+        <a class="btn btn-primary button2" href="/signup">Sign Up</a>
         
       </div>
     </div>

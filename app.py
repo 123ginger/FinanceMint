@@ -8,13 +8,14 @@ app.secret_key = "vra8eppuJ9vOYP/ybw=="
 
 
 # homepage
-@app.route("/")
+@app.route("/home")
 def home():
+    return render_template("homepage.html")
     # Do I need this in all my functions to make sure people are logged in before entering website?
-    if "username" in session:
-        return render_template("homepage.html")
-    else:
-        return redirect(url_for('login'))
+    #if "username" in session:
+        #return render_template("homepage.html")
+    #else:
+        #return redirect(url_for('login'))
 
 
 # login functionality
@@ -26,40 +27,41 @@ def login():
         username = request.form["username"]
         password = request.form["password"]
         session["username"] = username
-        # check if username and password are correct
-        user = db_session.query(User).where((User.username == username) & (User.password == password))
+        # check if there is a person like this
+        user = db_session.query(User).where((User.username == username) & (User.password == password)).first()
         if user == None:
-            flash("Your username/password is incorrect", "error")
             return render_template("login.html")
         else:
-            return redirect(url_for("homepage.html"))
+            return redirect(url_for("home"))
 
 
 # signup
-@app.route("/signup")
+@app.route("/signup", methods=["GET", "POST"])
 def signup():
     # ask for new username and password, check if unique, then add to database and redirect to new page
     if request.method=="GET":
-        return render_template("login.html")
+        return render_template("signup.html")
     elif request.method == "POST":
         # ask for content
         username = request.form["username"]
         password = request.form["password"]
-        email = request.form["email"]
         password_check = request.form["password-check"]
         # check that there are no passwords like that and it matches the check 
-        user = db_session.query(User).where((User.username == username) & (User.password == password))
-        if (user != None) and (password == password_check):
-            temp = User(username, password, email)
+        user = db_session.query(User).where((User.username == username)).first()
+        if (user is None) and (password == password_check):
+            temp = User(username, password)
             db_session.add(temp)
             db_session.commit()
-            return render_template("homepage.html")
+            session["username"] = username
+            return redirect(url_for("home"))
         else:
-            return render_template("signup.html")
+            return redirect(url_for("signup"))
+            
+        
           
 
 # Forum page
-@app.route("/forum")
+@app.route("/forum", methods=["GET", "POST"])
 def forum():
     if request.method=="GET":
         return render_template("forum.html")
@@ -67,15 +69,18 @@ def forum():
         content = request.form["post-textarea"]
         date = request.form["post-date-input"]
         type = request.form["post-type-select"]
-        word_count = request.form["post-word-count"]
-        temp = Post(word_count, content, date, type)
+        sort_by = request.form["post-sort-by"]
+        temp = Post(content, date, type)
         db_session.add(temp)
         db_session.commit()
-        # not the right way to print 
-        for posts in Post:
-            print(posts)
-
-
+        # query posts where the forms requested type is equal to a posts type 
+        #sorted_posts = db_session.query(Post).where((sort_by == Post.type)).first()
+        #posts = db_session.query(Post)
+        #if sorted_posts == None:
+            # how to do actual print for posts
+            #print(posts)
+        #else:
+            #print(sorted_posts)
 
 
 # How to log out
@@ -83,14 +88,9 @@ def forum():
 def logout():
     if "username" in session:
         session.pop("username")
-        flash("You've been logged out", "info")
+    flash("You've been logged out", "info")
     return redirect(url_for("login"))
-
-            
-
-        
-        
-         
+ 
 
 if __name__ == "__main__":
     init_db()

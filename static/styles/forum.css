@@ -8,10 +8,11 @@
     /* ChatGPT */
 }
 
-.first{
+.first {
     display: flex;
     justify-content: center;
     align-items: center;
+    border: transparent;
 }
 
 .card {
@@ -24,19 +25,10 @@
     font-size: 25px;
 }
 
-/* ChatGPT */
-.post {
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin-bottom: 10px;
+.bordered-container {
+    border: 2px solid black;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-left: 10px;
+    padding-right: 10px;
 }
-  
-.post-header {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-  
-.post-date {
-    font-style: italic
-}
-/* ChatGPT */

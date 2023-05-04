@@ -14,15 +14,15 @@
     <!-- ChatGPT -->
 
     <!-- Your Personal CSS BELOW this Line -->
-    <link rel="stylesheet" href="css/universal.css">
-    <link rel="stylesheet" href="css/forum.css">
+    <link rel="stylesheet" href="/static/styles/universal.css">
+    <link rel="stylesheet" href="/static/styles/forum.css">
   </head>
 
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light ">
-      <a class="navbar-brand" href="#"></a>
-      <a href="homepage.html"><img src="Images/logo.png" width="150" height="55" alt=""></a>
+      <a class="navbar-brand"></a>
+      <a href="/home"><img src="/static/images/logo.png" width="150" height="55" alt=""></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -30,19 +30,19 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="homepage.html">Homepage<span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/home">Homepage</a>
           </li>
           <li class="nav-item active">
-            <a class="nav-link" href="forum.html">Forum</a>
+            <a class="nav-link" href="/forum">Forum</a>
           </li>
           <li class="nav-item">
-            <a class="btn btn-info" href="{{url_for('logout')}}" role="button">Log out</a>
+            <a class="btn btn-info" href="{{url_for('logout')}}">Log out</a>
           </li>
         </ul>
       </div>
     </nav>
-    <img src="Images/forum_image.png" class="forum_image">
-    <!-- Info about forum -->
+    <img src="/static/images/forum_image.png" class="forum_image">
+    <!-- Info about forum     <span class="sr-only">(current)</span>-->
     <div class="container first">
       <div class="card">
         <div class="card-body">
@@ -53,11 +53,22 @@
         </div>
       </div>
     </div>
+
+
+   
     
 
-    <!-- ChatGPT Created Form but I put in flask items-->
-    <div class="container">
-      <form action=”#” method="POST" id="post-form">
+  
+    <br>
+    <!-- ChatGPT Created Form to create the posts-->
+    <div class="bordered-container">
+      <br><br>
+      <form method="POST" id="post-form">
+        <div class="form-group">
+          <label for="post-sort-by">Please enter what you would like to sort by:</label>
+          <input type="text" id="post-sort-by" name="post-sort-by">
+          <div>Options: ('Today's posts', 'your contributions', 'reviews', 'finance tips', and 'miscellaneous')</div>
+        </div>
         <div class="form-group">
           <label for="post-textarea">Post</label>
           <textarea class="form-control" id="post-textarea" rows="3" placeholder="Enter your post"></textarea>
@@ -67,22 +78,26 @@
           <input type="date" class="form-control" id="post-date-input">
         </div>
         <div class="form-group">
-          <label for="post-word-count">Word Count</label>
-          <input type="word_count" class="form-control" id="post-word-count">
-        </div>
-        <div class="form-group">
           <label for="post-type-select">Type of content</label>
           <select class="form-control" id="post-type-select">
             <option value="">-- Select --</option>
-            <option value="review">Review</option>
+            <option value="review">Reviews</option>
             <option value="finance">Finance Tips</option>
             <option value="misc">Miscellaneous</option>
           </select>
         </div>
         <button type="submit" class="btn btn-primary">Post</button>
-      </form>
-      <hr>
+      </form><br><br>
       <!-- ChatGPT Created Form-->
+
+
+      <!-- query info from desired sorting and then print those, just like twitter -->
+      <div class="container results">
+        
+      </div>
+      
+
+      
 
       <!-- Bootstrap JavaScript -->
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
