@@ -12,8 +12,10 @@ class User(Base):
     __tablename__ = "users"
 
     # Columns
-    username = Column("username", TEXT, primary_key=True)
+    id = Column("id", INTEGER, primary_key=True, autoincrement=True)
+    username = Column("username", TEXT, nullable=False)
     password = Column("password", TEXT, nullable=False)
+    posts = relationship("Post", back_populates="user")
 
     def __init__(self, username, password):
             # id auto-increments
@@ -25,11 +27,12 @@ class Post(Base):
     __tablename__ = "posts"
 
     #columns
-    id = Column("id", INTEGER, primary_key=True)
+    id = Column("id", INTEGER, primary_key=True, autoincrement=True)
     content = Column('content', TEXT)
     date = Column("date", TEXT)
     type = Column("type", TEXT)
-    #user_id = relationship("") do this tomorrow
+    user_id = Column(INTEGER, ForeignKey('users.id'))
+    user = relationship("User", back_populates="posts")
 
     
     def __init__(self, content, date, type):

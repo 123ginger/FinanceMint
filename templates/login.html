@@ -10,7 +10,7 @@
     <!-- Your Personal CSS BELOW this Line -->
     <link rel="stylesheet" href="/static/styles/universal.css">
     <link rel="stylesheet" href="/static/styles/login.css">
-    <script src="{{ url_for('static', filename='js/notification.js') }}"></script>
+    <script src="notification.js"></script>
   </head>
 
   <body>
@@ -34,14 +34,9 @@
                 <label for="password" class="form-label">Password:</label>
                 <input id="password" type="text" class="form-input" name="password">
               </div>
-              <button id="show-notification" class="btn btn-info submit-btn" type="submit">Login</button>
-              
-              <!-- need to get this to work -->
-              <div id="notification" class="notification hidden">
-                This is a notification!
+              <div class="form-group">
+                <button id="show-notification" class="btn btn-info submit-btn" type="submit">Login</button>
               </div>
-
-
             </form>
           </div>
           <hr>

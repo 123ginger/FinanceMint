@@ -44,9 +44,9 @@
     <img src="/static/images/forum_image.png" class="forum_image">
     <!-- Info about forum     <span class="sr-only">(current)</span>-->
     <div class="container first">
-      <div class="card">
+      <div class="card top-card">
         <div class="card-body">
-          <h5 class="card-title">Resource and Help Forum</h5>
+          <h5 class="card-title top-title">Resource and Help Forum</h5>
           <p class="card-text">We understand that finances are complex and that you may be a potential customer at
             FinanceMint. Therefore, we want to provide you with a forum that contains reviews, helpful tips, and more
             knowledge, all provided by our customers. You may add any information you see fit whenever you desire!</p>
@@ -58,28 +58,34 @@
    
     
 
-  
+
     <br>
     <!-- ChatGPT Created Form to create the posts-->
+
     <div class="bordered-container">
       <br><br>
       <form method="POST" id="post-form">
         <div class="form-group">
-          <label for="post-sort-by">Please enter what you would like to sort by:</label>
-          <input type="text" id="post-sort-by" name="post-sort-by">
-          <div>Options: ('Today's posts', 'your contributions', 'reviews', 'finance tips', and 'miscellaneous')</div>
+          <label for="post-sort-by">Sort content by:</label>
+          <select class="form-control" id="post-sort-by" name="post-sort-by">
+            <option value="">-- Today's Posts --</option>
+            <option value="review">Reviews</option>
+            <option value="finance">Your Contributions</option>
+            <option value="misc">Finance Tips</option>
+            <option value="misc">Miscellaneous</option>
+          </select>
         </div>
         <div class="form-group">
-          <label for="post-textarea">Post</label>
-          <textarea class="form-control" id="post-textarea" rows="3" placeholder="Enter your post"></textarea>
+          <label for="post-text-area">Post</label>
+          <textarea class="form-control" id="post-text-area" name="post-text-area" rows="3" placeholder="Enter your post"></textarea>
         </div>
         <div class="form-group">
           <label for="post-date-input">Date</label>
-          <input type="date" class="form-control" id="post-date-input">
+          <input type="date" class="form-control" id="post-date-input" name="post-date-input">
         </div>
         <div class="form-group">
           <label for="post-type-select">Type of content</label>
-          <select class="form-control" id="post-type-select">
+          <select class="form-control" id="post-type-select" name="post-type-select">
             <option value="">-- Select --</option>
             <option value="review">Reviews</option>
             <option value="finance">Finance Tips</option>
@@ -88,13 +94,31 @@
         </div>
         <button type="submit" class="btn btn-primary">Post</button>
       </form><br><br>
+    </div><br><br><br>
       <!-- ChatGPT Created Form-->
 
 
       <!-- query info from desired sorting and then print those, just like twitter -->
-      <div class="container results">
-        
+      <div class="forum-title">
+        <h1>Posts</h1><br>
       </div>
+      <div class="forum-subtitle">
+        <h6>Contribute a post to see what others have said</h6>
+      </div><br><br>
+      <div class="container">
+        <div class="container-results">
+          {% for record in records %}
+            <div class="card posts">
+              <p>{{ record.content }}</p>
+              <h2>{{ record.date }}</h2>
+              
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      
+
+    
       
 
       

@@ -29,13 +29,6 @@
             </li>
             <li class="nav-item">
               <a class="btn btn-info" href="{{url_for('logout')}}">Log out</a>
-              {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                  {% for msg in messages %}
-                    <p>{{msg}}</p>
-                  {% endfor %}
-                {% endif %}
-              {% endwith %}
             </li>
           </ul>
         </div>

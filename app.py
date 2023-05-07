@@ -7,6 +7,10 @@ app = Flask(__name__)
 app.secret_key = "vra8eppuJ9vOYP/ybw=="
 
 
+@app.route("/")
+def home1():
+    return render_template("login.html")
+
 # homepage
 @app.route("/home")
 def home():
@@ -35,6 +39,7 @@ def login():
             return redirect(url_for("home"))
 
 
+
 # signup
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
@@ -59,21 +64,24 @@ def signup():
             
         
           
-
 # Forum page
 @app.route("/forum", methods=["GET", "POST"])
 def forum():
     if request.method=="GET":
         return render_template("forum.html")
     elif request.method == "POST":
-        content = request.form["post-textarea"]
+        content = request.form["post-text-area"]
         date = request.form["post-date-input"]
         type = request.form["post-type-select"]
         sort_by = request.form["post-sort-by"]
         temp = Post(content, date, type)
         db_session.add(temp)
         db_session.commit()
-        # query posts where the forms requested type is equal to a posts type 
+        # print the posts being made while on page
+        records = db_session.query(Post).all()
+        return render_template('forum.html', records=records)
+    
+        # sort the posts 
         #sorted_posts = db_session.query(Post).where((sort_by == Post.type)).first()
         #posts = db_session.query(Post)
         #if sorted_posts == None:
