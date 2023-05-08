@@ -54,24 +54,19 @@
       </div>
     </div>
 
-
-   
-    
-
-
     <br>
     <!-- ChatGPT Created Form to create the posts-->
-
     <div class="bordered-container">
       <br><br>
       <form method="POST" id="post-form">
         <div class="form-group">
           <label for="post-sort-by">Sort content by:</label>
           <select class="form-control" id="post-sort-by" name="post-sort-by">
-            <option value="">-- Today's Posts --</option>
+            <option value="all">All</option>
+            <option value="today-posted">-- Today's Posts --</option>
             <option value="review">Reviews</option>
-            <option value="finance">Your Contributions</option>
-            <option value="misc">Finance Tips</option>
+            <option value="user_contributions">Your Contributions</option>
+            <option value="finance">Finance Tips</option>
             <option value="misc">Miscellaneous</option>
           </select>
         </div>
@@ -79,10 +74,10 @@
           <label for="post-text-area">Post</label>
           <textarea class="form-control" id="post-text-area" name="post-text-area" rows="3" placeholder="Enter your post"></textarea>
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="post-date-input">Date</label>
           <input type="date" class="form-control" id="post-date-input" name="post-date-input">
-        </div>
+        </div> -->
         <div class="form-group">
           <label for="post-type-select">Type of content</label>
           <select class="form-control" id="post-type-select" name="post-type-select">
@@ -97,8 +92,7 @@
     </div><br><br><br>
       <!-- ChatGPT Created Form-->
 
-
-      <!-- query info from desired sorting and then print those, just like twitter -->
+      <!-- Printing the posts -->
       <div class="forum-title">
         <h1>Posts</h1><br>
       </div>
@@ -109,20 +103,13 @@
         <div class="container-results">
           {% for record in records %}
             <div class="card posts">
-              <p>{{ record.content }}</p>
-              <h2>{{ record.date }}</h2>
-              
+              <h2> Posted by {{ record.user_id }} <br> on {{ record.date }}</h2>
+              <p>{{ record.content }}</p>     
             </div>
           {% endfor %}
         </div>
       </div>
       
-
-    
-      
-
-      
-
       <!-- Bootstrap JavaScript -->
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

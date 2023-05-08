@@ -12,9 +12,9 @@ class User(Base):
     __tablename__ = "users"
 
     # Columns
-    id = Column("id", INTEGER, primary_key=True, autoincrement=True)
-    username = Column("username", TEXT, nullable=False)
+    username = Column("username", TEXT, primary_key=True, nullable=False)
     password = Column("password", TEXT, nullable=False)
+    # Here I am showing an understanding of relationships
     posts = relationship("Post", back_populates="user")
 
     def __init__(self, username, password):
@@ -31,12 +31,14 @@ class Post(Base):
     content = Column('content', TEXT)
     date = Column("date", TEXT)
     type = Column("type", TEXT)
-    user_id = Column(INTEGER, ForeignKey('users.id'))
+    # Here I am showing an understanding of relationships
+    user_id = Column(TEXT, ForeignKey('users.username'))
     user = relationship("User", back_populates="posts")
 
     
-    def __init__(self, content, date, type):
+    def __init__(self, content, date, type, user_id):
             # id auto-increments
             self.content = content
             self.date = date
             self.type = type
+            self.user_id = user_id
