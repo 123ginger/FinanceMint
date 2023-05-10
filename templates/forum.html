@@ -2,7 +2,6 @@
 <html lang="en">
 
   <head>
-    <title>Forum</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,107 +13,94 @@
     
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <!-- Your Personal CSS BELOW this Line -->
-    <link rel="stylesheet" href="/static/styles/universal.css">
-    <link rel="stylesheet" href="/static/styles/forum.css">
   </head>
 
   <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light ">
-      <a class="navbar-brand"></a>
-      <a href="/home"><img src="/static/images/logo.png" width="150" height="55" alt=""></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="/home">Homepage</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="/forum">Forum</a>
-          </li>
-          <li class="nav-item">
-            <a class="btn btn-info" href="{{url_for('logout')}}">Log out</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <img src="/static/images/forum_image.png" class="forum-image">
-    <div class="container top-info">
-      <div class="card top-card">
-        <div class="card-body">
-          <h5 class="card-title top-title">Resource and Help Forum</h5>
-          <p class="card-text">We understand that finances are complex and that you may be a potential customer at
-            FinanceMint. Therefore, we want to provide you with a forum that contains reviews, helpful tips, and more
-            knowledge, all provided by our customers. You may add any information you see fit whenever you desire!</p>
-        </div>
-      </div>
-    </div>
 
-    <br>
-    <!-- ChatGPT Created Form to create the posts. However, I edited it significantly so the posting and saving content was possible -->
-    <div class="bordered-container">
-      <br><br>
-      <form method="POST" id="post-form">
-        <div class="form-group">
-          <label for="post-sort-by">Sort content by:</label>
-          <select class="form-control" id="post-sort-by" name="post-sort-by">
-            <option value="all">All</option>
-            <option value="today-posted">-- Today's Posts --</option>
-            <option value="review">Reviews</option>
-            <option value="user_contributions">Your Contributions</option>
-            <option value="finance">Finance Tips</option>
-            <option value="misc">Miscellaneous</option>
-          </select>
-        </div><hr>
-        <div class="form-group">
-          <label for="post-text-area">Post</label>
-          <textarea class="form-control" id="post-text-area" name="post-text-area" rows="3" placeholder="Enter your post"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="post-type-select">Type of content</label>
-          <select class="form-control" id="post-type-select" name="post-type-select">
-            <option value="">-- Select --</option>
-            <option value="review">Reviews</option>
-            <option value="finance">Finance Tips</option>
-            <option value="misc">Miscellaneous</option>
-          </select>
-        </div>
-        <button type="submit" class="btn btn-primary">Post</button>
-      </form><br><br>
-    </div><br><br><br>
-    <!-- ChatGPT Created Form-->
+    {% extends 'base.html' %}
 
-    <!-- Start of section where content is posted -->
-      <div class="forum-title">
-        <h1>Posts</h1><br>
-      </div>
-      <div class="forum-subtitle">
-        <h6>Contribute a post to see what others have said</h6>
-      </div><br><br>
-  
-      <!-- Print the card if only if it has content-->
-      <div class="container">
-        <div class="container-results">
-          {% for record in records %}
-            {% if record.content|length != 0 %}
-              <div class="card posts">
-                <!-- uses the sent record list to retrieve these values and print them -->
-                <h2> Posted by {{ record.user_id }} <br> on {{ record.date }}</h2>
-                <p>{{ record.content }}</p> 
-              </div>   
-            {% endif %}
-          {% endfor %}
+    {% block title %}Forum{% endblock %}
+
+    {% block specific_css %}
+      <link rel="stylesheet" href="/static/styles/universal.css">
+      <link rel="stylesheet" href="/static/styles/forum.css">
+    {% endblock %}
+    
+    
+    {% block content %}
+      <img src="/static/images/forum_image.png" class="forum-image">
+      <div class="container top-info">
+        <div class="card top-card">
+          <div class="card-body">
+            <h5 class="card-title top-title">Resource and Help Forum</h5>
+            <p class="card-text">We understand that finances are complex and that you may be a potential customer at
+              FinanceMint. Therefore, we want to provide you with a forum that contains reviews, helpful tips, and more
+              knowledge, all provided by our customers. You may add any information you see fit whenever you desire!</p>
+          </div>
         </div>
       </div>
-      
-      <!-- Bootstrap JavaScript -->
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+      <br>
+      <!-- ChatGPT Created Form to create the posts. However, I edited it significantly so the posting and saving content was possible -->
+      <div class="bordered-container">
+        <br><br>
+        <form method="POST" id="post-form">
+          <div class="form-group">
+            <label for="post-sort-by">Sort content by:</label>
+            <select class="form-control" id="post-sort-by" name="post-sort-by">
+              <option value="all">All</option>
+              <option value="today-posted">-- Today's Posts --</option>
+              <option value="review">Reviews</option>
+              <option value="user_contributions">Your Contributions</option>
+              <option value="finance">Finance Tips</option>
+              <option value="misc">Miscellaneous</option>
+            </select>
+          </div><hr>
+          <div class="form-group">
+            <label for="post-text-area">Post</label>
+            <textarea class="form-control" id="post-text-area" name="post-text-area" rows="3" placeholder="Enter your post"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="post-type-select">Type of content</label>
+            <select class="form-control" id="post-type-select" name="post-type-select">
+              <option value="">-- Select --</option>
+              <option value="review">Reviews</option>
+              <option value="finance">Finance Tips</option>
+              <option value="misc">Miscellaneous</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Post</button>
+        </form><br><br>
+      </div><br><br><br>
+      <!-- ChatGPT Created Form-->
+
+      <!-- Start of section where content is posted -->
+        <div class="forum-title">
+          <h1>Posts</h1><br>
+        </div>
+        <div class="forum-subtitle">
+          <h6>Contribute a post to see what others have said</h6>
+        </div><br><br>
+    
+        <!-- Print the card if only if it has content-->
+        <div class="container">
+          <div class="container-results">
+            {% for record in records %}
+              {% if record.content|length != 0 %}
+                <div class="card posts">
+                  <!-- uses the sent record list to retrieve these values and print them -->
+                  <h2> Posted by {{ record.user_id }} <br> on {{ record.date }}</h2>
+                  <p>{{ record.content }}</p> 
+                </div>   
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+    {% endblock %}
+    
+    <!-- Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
