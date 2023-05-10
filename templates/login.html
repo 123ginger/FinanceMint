@@ -2,7 +2,7 @@
 <html>
   
   <head>
-    <title>Login Page</title>
+    <title>Login</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
@@ -15,24 +15,25 @@
 
   <body>
     <div class="row">
-      <!-- Splitting the page into two section, one for log in and one to go to sign up page -->
+      <!-- First of two sections that the page is split into -->
       <div class="col-md-8">
         <div class="login_section">
-          <div class="welcome_message">
-            <div class="inside_welcome">
+          <div class="welcome-message">
+            <div class="inside-welcome">
               <h5>Welcome to<div class="title">FinanceMint</div> the place dedicated to helping you navigate the complex
                 world of personal finance when living in the US and San Fransisco.</h5>
             </div>
           </div>
-          <div class="background_image">
+          <!-- Form to login with -->
+          <div class="background-image">
             <form method="POST" class="login-container">
               <div class="form-group">
                 <label for="username" class="form-label">Username:</label>
-                <input id="username" type="text" class="form-input" name="username">
+                <input id="username" type="text" class="form-input" name="username" autocomplete="off">
               </div>
               <div class="form-group">
                 <label for="password" class="form-label">Password:</label>
-                <input id="password" type="text" class="form-input" name="password">
+                <input id="password" type="text" class="form-input" name="password" autocomplete="off">
               </div>
               <div class="form-group">
                 <button id="show-notification" class="btn btn-info submit-btn" type="submit">Login</button>
@@ -63,13 +64,13 @@
           </div>
         </div>
     </div>
-      <!-- Beginning of second section of page -->
-      <div class="col-md-4 column2">
+      <!-- Second section of page -->
+      <div class="col-md-4 column-two">
         <img src="/static/images/logo.png" class="logo">
-        <div class="signup_section">
+        <div class="signup-section">
           <h3>Don't have an account? Sign up for free!</h3>
         </div>
-        <a class="btn btn-primary button2" href="/signup">Sign Up</a>
+        <a class="btn btn-primary button-two" href="/signup">Sign Up</a>
       </div>
     </div>
   </body>

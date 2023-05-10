@@ -10,11 +10,12 @@
     <link rel="stylesheet" href="FinanceMint/static/styles/universal.css">
     <link rel="stylesheet" href="FinanceMint/static/styles/signup.css"> 
 
+    <!-- Personal CSS -->
     <link rel="stylesheet" href="/static/styles/signup.css">
   </head>
 
   <body>
-  <!-- ChatGPT Created Forum. However, I did a lot of editing to make it sent data to app.py -->
+  <!-- ChatGPT created Forum. However, I did a lot of editing to make it send data to app.py correctly -->
     <div class="container mt-5">
       <div class="row justify-content-center">
         <div class="col-md-8">
@@ -22,17 +23,17 @@
           <form method="POST">
             <div class="form-group">
               <label for="username">Username</label>
-              <input type="text" class="form-control" id="username" name="username" required>
+              <input type="text" class="form-control" id="username" name="username"  autocomplete="off" required>
               <span class="error-message" id="username-error"></span>
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" class="form-control" id="password" name="password" required>
+              <input type="password" class="form-control" id="password" name="password" autocomplete="off" required>
               <span class="error-message" id="password-error"></span>
             </div>
             <div class="form-group">
               <label for="password-check">Confirm Password</label>
-              <input type="password" class="form-control" id="password-check" name="password-check" required>
+              <input type="password" class="form-control" id="password-check" name="password-check" autocomplete="off" required>
               <span class="error-message" id="password-check-error"></span>
             </div>
             <div class="form-group">

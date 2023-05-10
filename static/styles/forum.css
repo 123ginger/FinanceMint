@@ -1,4 +1,4 @@
-.forum_image {
+.forum-image {
     height: 40vh;
     width: 100vh;
     /* ChatGPT */
@@ -8,7 +8,7 @@
     /* ChatGPT */
 }
 
-.first {
+.top-info {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -66,4 +66,8 @@ p {
 
 h2 {
     font-size: 13px;
+}
+
+hr {
+    border: 1px solid black;
 }

@@ -2,6 +2,7 @@
 <html lang="en">
 
   <head>
+    <title>Forum</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,9 +10,10 @@
     <!-- ChatGPT -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ChatGPT -->
+    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- ChatGPT -->
 
     <!-- Your Personal CSS BELOW this Line -->
     <link rel="stylesheet" href="/static/styles/universal.css">
@@ -41,9 +43,8 @@
         </ul>
       </div>
     </nav>
-    <img src="/static/images/forum_image.png" class="forum_image">
-    <!-- Info about forum     <span class="sr-only">(current)</span>-->
-    <div class="container first">
+    <img src="/static/images/forum_image.png" class="forum-image">
+    <div class="container top-info">
       <div class="card top-card">
         <div class="card-body">
           <h5 class="card-title top-title">Resource and Help Forum</h5>
@@ -55,7 +56,7 @@
     </div>
 
     <br>
-    <!-- ChatGPT Created Form to create the posts-->
+    <!-- ChatGPT Created Form to create the posts. However, I edited it significantly so the posting and saving content was possible -->
     <div class="bordered-container">
       <br><br>
       <form method="POST" id="post-form">
@@ -69,15 +70,11 @@
             <option value="finance">Finance Tips</option>
             <option value="misc">Miscellaneous</option>
           </select>
-        </div>
+        </div><hr>
         <div class="form-group">
           <label for="post-text-area">Post</label>
           <textarea class="form-control" id="post-text-area" name="post-text-area" rows="3" placeholder="Enter your post"></textarea>
         </div>
-        <!-- <div class="form-group">
-          <label for="post-date-input">Date</label>
-          <input type="date" class="form-control" id="post-date-input" name="post-date-input">
-        </div> -->
         <div class="form-group">
           <label for="post-type-select">Type of content</label>
           <select class="form-control" id="post-type-select" name="post-type-select">
@@ -90,22 +87,27 @@
         <button type="submit" class="btn btn-primary">Post</button>
       </form><br><br>
     </div><br><br><br>
-      <!-- ChatGPT Created Form-->
+    <!-- ChatGPT Created Form-->
 
-      <!-- Printing the posts -->
+    <!-- Start of section where content is posted -->
       <div class="forum-title">
         <h1>Posts</h1><br>
       </div>
       <div class="forum-subtitle">
         <h6>Contribute a post to see what others have said</h6>
       </div><br><br>
+  
+      <!-- Print the card if only if it has content-->
       <div class="container">
         <div class="container-results">
           {% for record in records %}
-            <div class="card posts">
-              <h2> Posted by {{ record.user_id }} <br> on {{ record.date }}</h2>
-              <p>{{ record.content }}</p>     
-            </div>
+            {% if record.content|length != 0 %}
+              <div class="card posts">
+                <!-- uses the sent record list to retrieve these values and print them -->
+                <h2> Posted by {{ record.user_id }} <br> on {{ record.date }}</h2>
+                <p>{{ record.content }}</p> 
+              </div>   
+            {% endif %}
           {% endfor %}
         </div>
       </div>
